@@ -3,7 +3,6 @@
 The main goal of the project was to centralize sales, customer, inventory, and transaction data from multiple source systems into a unified Lakehouse architecture for near real-time analytics and reporting.
 Basically, business teams were facing issues because data was spread across multiple systems, reporting was manual, and decision-making was taking more time.
 So our objective was to build a scalable and centralized analytics platform using Microsoft Fabric.
-
 Step 1 — Source Systems:
 We received data from multiple source systems like:
 > SQL Server
@@ -90,3 +89,6 @@ For deployment and migration between: > DEV
                                       > Production
 environments , we used : Git-based CI/CD pipelines
  for smooth release management and deployment automation
+
+
+final output
