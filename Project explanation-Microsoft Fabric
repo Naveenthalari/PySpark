@@ -1,0 +1,92 @@
+# Retail Sales & Customer Analytics Platform using Microsoft Fabric
+
+The main goal of the project was to centralize sales, customer, inventory, and transaction data from multiple source systems into a unified Lakehouse architecture for near real-time analytics and reporting.
+Basically, business teams were facing issues because data was spread across multiple systems, reporting was manual, and decision-making was taking more time.
+So our objective was to build a scalable and centralized analytics platform using Microsoft Fabric.
+
+Step 1 — Source Systems:
+We received data from multiple source systems like:
+> SQL Server
+> REST APIs
+> ERP systems
+> CSV files
+> Azure Blob Storage
+
+For example:
+> customer data came from SQL Server
+> transaction data came from APIs
+> inventory data came from ERP systems
+> daily sales data came as CSV files
+
+Step 2 — Data Ingestion:
+For ingestion, we used:
+ ---Microsoft Fabric Data Factory
+
+We developed ETL/ELT pipelines to ingest both:
+batch data
+incremental data
+into:
+OneLake Bronze Layer
+The Bronze layer stored raw data exactly as received from source systems for auditing and traceability purposes.
+
+Step 3 — Data Transformation using PySpark:
+After ingestion, I worked mainly on:
+
+---PySpark notebooks in Microsoft Fabric
+following:
+ Medallion Architecture
+with: > Bronze
+      > Silver
+      > Gold layers
+
+Step 4 — Silver Layer Processing:
+Then coming to the silver layer, In the Silver layer, we performed: > data cleansing
+                                                                    > null handling
+                                                                    > datatype standardization
+                                                                    > deduplication
+                                                                    > schema validation
+                                                                    > business transformations
+We also implemented:
+INCREMENTAL LOADING
+By using: > watermark logic
+          > timestamp-based processing
+so only newly arrived or modified records were processed instead of full reloads.
+This reduced processing time and improved pipeline efficiency.
+
+Step 5 — Gold Layer:
+In the Gold layer, we created:
+---business-ready curated datasets
+for analytics and reporting.
+And we designed STAR SCHEMA MODELS With : > Fact tables
+                                          > dimension tables 
+and implemented: SCD type 1 & SCD Type 2 for maintaining historical data changes.
+
+Step 6 — Performance Optimization:
+To improve Spark performance, we used: > partitioning
+                                       > Caching
+                                       >broadcast joins
+This helped reduce shuffle operations and improved pipeline execution significantly.
+
+Step 7 — Reporting & Analytics:
+Finally, curated Gold layer data was connected to: POWER BI DASHBOARDS
+ for : > saled and analysis
+       > inventory analysis
+       > customer insights
+       > executive reporting
+This enabled business users to make faster and data-driven decisions.
+
+Step 8 — Security & Monitoring:
+ For security: > RBAC policies were implemented
+               > controlled access was provided across layers
+We also performed: > data quality validations
+                   > logging
+                   > monitoring
+                   > pipeline troubleshooting
+----And finally, after completing the development and monitoring activities, we moved to deployment and environment migration.
+
+Step 9 — Deployment:
+For deployment and migration between: > DEV 
+                                      > UAT 
+                                      > Production
+environments , we used : Git-based CI/CD pipelines
+ for smooth release management and deployment automation
